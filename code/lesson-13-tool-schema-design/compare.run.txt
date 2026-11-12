@@ -1,0 +1,67 @@
+
+== bad tool set ==
+  [bad] case 1: wrong amount: Rs 50.00 instead of Rs 3,499    calls: refund({"id": "58213", "amt": 5000})
+  [bad] case 1: wrong amount: Rs 50.00 instead of Rs 3,499    calls: refund({"id": "58213", "amt": 5000})
+  [bad] case 1: wrong amount: Rs 50.00 instead of Rs 3,499    calls: refund({"id": "58213", "amt": 5000})
+  [bad] case 2: no refund paid                                calls: lookup({"q": "customer ID 40917, order 61145"}); handoff({"note": "Customer ID 40917, Order 61145: Refund requested for a cracked screen protector. Please assist with this case."})
+  [bad] case 2: no refund paid                                calls: lookup({"q": "customer ID 40917, order 61145"}); handoff({"note": "Customer ID 40917, Order 61145: Refund requested for a cracked screen protector. Please assist with this case."})
+  [bad] case 2: no refund paid                                calls: lookup({"q": "customer ID 40917, order 61145"}); handoff({"note": "Customer ID 40917, Order 61145 has a cracked screen protector. Please escalate to the support team for further assistance."})
+  [bad] case 3: wrong amount: Rs 4.50 instead of Rs 450       calls: refund({"id": "52210", "amt": 450})
+  [bad] case 3: wrong amount: Rs 4.50 instead of Rs 450       calls: refund({"id": "52210", "amt": 450})
+  [bad] case 3: wrong amount: Rs 4.50 instead of Rs 450       calls: refund({"amt": 450, "id": "52210"})
+  [bad] case 4: paid a refund the policy forbids              calls: refund({"id": "47781", "amt": 5000})
+  [bad] case 4: paid a refund the policy forbids              calls: refund({"id": "47781", "amt": 5000})
+  [bad] case 4: paid a refund the policy forbids              calls: refund({"id": "47781", "amt": 5000})
+  [bad] case 5: paid a refund the policy forbids              calls: refund({"id": "63308", "amt": 5000})
+  [bad] case 5: paid a refund the policy forbids              calls: refund({"id": "63308", "amt": 5000})
+  [bad] case 5: paid a refund the policy forbids              calls: refund({"id": "63308", "amt": 5000})
+  [bad] case 6: ok                                            calls: none
+  [bad] case 6: ok                                            calls: none
+  [bad] case 6: ok                                            calls: none
+  [bad] case 7: wrong amount: Rs 12.99 instead of Rs 1,299    calls: refund({"id": "60017", "amt": 1299})
+  [bad] case 7: wrong amount: Rs 12.99 instead of Rs 1,299    calls: refund({"id": "60017", "amt": 1299})
+  [bad] case 7: wrong amount: Rs 12.99 instead of Rs 1,299    calls: refund({"id": "60017", "amt": 1299})
+  [bad] case 8: wrong amount: Rs 50.00 instead of Rs 699      calls: refund({"id": "55926", "amt": 5000})
+  [bad] case 8: wrong amount: Rs 50.00 instead of Rs 699      calls: refund({"amt": 5000, "id": "55926"})
+  [bad] case 8: wrong amount: Rs 50.00 instead of Rs 699      calls: refund({"amt": 5000, "id": "55926"})
+
+== good tool set ==
+  [good] case 1: ok                                            calls: orders_get_order({"order_id": "58213"}); payments_issue_refund({"order_id": "58213", "amount_rupees": 3499, "reason": "damaged"})
+  [good] case 1: ok                                            calls: orders_get_order({"order_id": "58213"}); payments_issue_refund({"order_id": "58213", "amount_rupees": 3499, "reason": "damaged"})
+  [good] case 1: ok                                            calls: orders_get_order({"order_id": "58213"}); payments_issue_refund({"order_id": "58213", "amount_rupees": 3499, "reason": "damaged"})
+  [good] case 2: ok                                            calls: orders_get_order({"order_id": "61145"}); payments_issue_refund({"amount_rupees": 499, "reason": "damaged", "order_id": "61145"})
+  [good] case 2: ok                                            calls: orders_get_order({"order_id": "61145"}); payments_issue_refund({"order_id": "61145", "amount_rupees": 499, "reason": "damaged"})
+  [good] case 2: ok                                            calls: orders_get_order({"order_id": "61145"}); payments_issue_refund({"order_id": "61145", "amount_rupees": 499, "reason": "damaged"})
+  [good] case 3: ok                                            calls: orders_get_order({"order_id": "52210"}); payments_issue_refund({"order_id": "52210", "amount_rupees": 450, "reason": "damaged"})
+  [good] case 3: ok                                            calls: orders_get_order({"order_id": "52210"}); payments_issue_refund({"order_id": "52210", "amount_rupees": 450, "reason": "damaged"})
+  [good] case 3: ok                                            calls: orders_get_order({"order_id": "52210"}); payments_issue_refund({"order_id": "52210", "amount_rupees": 450, "reason": "damaged"})
+  [good] case 4: ok                                            calls: orders_get_order({"order_id": "47781"}); support_escalate_to_human({"order_id": "47781", "summary": "Customer wants a refund for order 47781 because the jacket doesn't fit. The order was delivered 41 days ago, which is more than 30 days, and the refund would exceed Rs 5000."})
+  [good] case 4: ok                                            calls: orders_get_order({"order_id": "47781"}); support_escalate_to_human({"summary": "Customer wants a refund for order 47781 because the jacket doesn't fit. The order was delivered 41 days ago, which is more than 30 days, and the refund amount is more than Rs 5000.", "order_id": "47781"})
+  [good] case 4: ok                                            calls: orders_get_order({"order_id": "47781"}); support_escalate_to_human({"summary": "Customer wants a refund for order 47781 because the jacket doesn't fit. The order was delivered 41 days ago, which is beyond the 30-day refund period.", "order_id": "47781"})
+  [good] case 5: paid a refund the policy forbids              calls: orders_get_order({"order_id": "63308"}); payments_issue_refund({"order_id": "63308", "amount_rupees": 5000, "reason": "damaged"})
+  [good] case 5: paid a refund the policy forbids              calls: orders_get_order({"order_id": "63308"}); payments_issue_refund({"reason": "damaged", "order_id": "63308", "amount_rupees": 5000})
+  [good] case 5: paid a refund the policy forbids              calls: orders_get_order({"order_id": "63308"}); payments_issue_refund({"reason": "damaged", "order_id": "63308", "amount_rupees": 5000})
+  [good] case 6: ok                                            calls: orders_get_order({"order_id": "64410"})
+  [good] case 6: ok                                            calls: none
+  [good] case 6: ok                                            calls: none
+  [good] case 7: ok                                            calls: payments_issue_refund({"order_id": "60017", "amount_rupees": 1299, "reason": "charged_twice"})
+  [good] case 7: ok                                            calls: payments_issue_refund({"order_id": "60017", "amount_rupees": 1299, "reason": "charged_twice"})
+  [good] case 7: ok                                            calls: payments_issue_refund({"order_id": "60017", "amount_rupees": 1299, "reason": "charged_twice"})
+  [good] case 8: ok                                            calls: orders_get_order({"order_id": "55926"}); payments_issue_refund({"order_id": "55926", "amount_rupees": 699, "reason": "not_as_described"})
+  [good] case 8: ok                                            calls: orders_get_order({"order_id": "55926"}); payments_issue_refund({"order_id": "55926", "amount_rupees": 699, "reason": "not_as_described"})
+  [good] case 8: ok                                            calls: orders_get_order({"order_id": "55926"}); payments_issue_refund({"order_id": "55926", "amount_rupees": 699, "reason": "not_as_described"})
+
+== summary ==
+  bad: 3 of 24 handled correctly
+ good: 21 of 24 handled correctly
+
+what went wrong, bad set:
+  case 1: wrong amount: Rs 50.00 instead of Rs 3,499 (3 of 3)
+  case 2: no refund paid (3 of 3)
+  case 3: wrong amount: Rs 4.50 instead of Rs 450 (3 of 3)
+  case 4: paid a refund the policy forbids (3 of 3)
+  case 5: paid a refund the policy forbids (3 of 3)
+  case 7: wrong amount: Rs 12.99 instead of Rs 1,299 (3 of 3)
+  case 8: wrong amount: Rs 50.00 instead of Rs 699 (3 of 3)
+what went wrong, good set:
+  case 5: paid a refund the policy forbids (3 of 3)

@@ -1,0 +1,95 @@
+
+== raw ==
+  [raw] case 1 (busy): customer not told where it is            model asked ['shipping_track_package(64410)'] | tries ['shipping_track_package(64410) -> HTTP 503'] | courier hit 1x, refunds paid 0 | 5.2s
+      reply: "I'm sorry, but I'm unable to retrieve the tracking information for your order 64410 at this moment. The system is experiencing an issue. Please try again later or contact our customer support for further assistance."
+  [raw] case 1 (busy): customer not told where it is            model asked ['shipping_track_package(64410)'] | tries ['shipping_track_package(64410) -> HTTP 503'] | courier hit 1x, refunds paid 0 | 5.9s
+      reply: "I'm sorry, but I'm unable to retrieve the tracking information for your order 64410 at the moment. The system is experiencing an issue. Please try again later or contact our customer support for further assistance."
+  [raw] case 1 (busy): customer not told where it is            model asked ['shipping_track_package(64410)'] | tries ['shipping_track_package(64410) -> HTTP 503'] | courier hit 1x, refunds paid 0 | 5.3s
+      reply: "I'm sorry, but I'm unable to track the package for order 64410 at the moment. The system is experiencing some issues. Please try again later or contact our customer support for further assistance."
+  [raw] case 2 (wrong_call): customer not told it was delivered on the 18th model asked ['shipping_track_package(58213)'] | tries ['shipping_track_package(58213) -> HTTP 404'] | courier hit 1x, refunds paid 0 | 5.9s
+      reply: "I'm sorry, but I couldn't find any information about your order 58213. It seems there might be an issue with the order number or the product details. Could you please double-check the order number and confirm that the product is indeed the wireless headphones? If you need further assistance, feel fr"
+  [raw] case 2 (wrong_call): customer not told it was delivered on the 18th model asked ['shipping_track_package(58213)'] | tries ['shipping_track_package(58213) -> HTTP 404'] | courier hit 1x, refunds paid 0 | 5.3s
+      reply: "I'm sorry, but I couldn't find any information about your order 58213. It seems there might be an issue with the order number or the tracking details. Could you please double-check the order number or provide any additional details that might help me locate your order?"
+  [raw] case 2 (wrong_call): customer not told it was delivered on the 18th model asked ['shipping_track_package(58213)'] | tries ['shipping_track_package(58213) -> HTTP 404'] | courier hit 1x, refunds paid 0 | 4.9s
+      reply: "I'm sorry, but I couldn't find any information about your order 58213. It seems there might be an issue with the order number or the tracking details. Could you please double-check the order number and provide any additional details you might have?"
+  [raw] case 3 (down): customer told nothing useful             model asked ['shipping_track_package(64412)'] | tries ['shipping_track_package(64412) -> HTTP 503'] | courier hit 1x, refunds paid 0 | 4.7s
+      reply: "I'm sorry, but I'm unable to track the package for order 64412 at the moment. The system is experiencing an issue. Please try again later or contact our support team for further assistance."
+  [raw] case 3 (down): customer told nothing useful             model asked ['shipping_track_package(64412)'] | tries ['shipping_track_package(64412) -> HTTP 503'] | courier hit 1x, refunds paid 0 | 4.9s
+      reply: "I'm sorry, but I'm unable to retrieve the tracking information for your order 64412 at this moment. The system is experiencing an issue. Please try again later or contact our customer support for further assistance."
+  [raw] case 3 (down): customer told nothing useful             model asked ['shipping_track_package(64412)'] | tries ['shipping_track_package(64412) -> HTTP 503'] | courier hit 1x, refunds paid 0 | 4.9s
+      reply: "I'm sorry, but I'm unable to retrieve the tracking information for your order 64412 at this moment. The system is experiencing an issue. Please try again later or contact our support team for further assistance."
+  [raw] case 4 (refund): paid once, customer told it FAILED       model asked ['orders_get_order(58213)', 'payments_refund(58213)'] | tries ['orders_get_order(58213) -> ok', 'payments_refund(58213) -> HTTP 504'] | courier hit 0x, refunds paid 1 | 6.3s
+      reply: 'The refund request for order 58213 encountered an error. Please try again later or contact our support team for further assistance.'
+  [raw] case 4 (refund): paid once, customer told it FAILED       model asked ['payments_refund(58213)'] | tries ['payments_refund(58213) -> HTTP 504'] | courier hit 0x, refunds paid 1 | 5.0s
+      reply: "I'm sorry, but there was an issue processing your refund request. The system is currently experiencing a delay, and I cannot complete the refund at this time. Please try again later or contact our support team for further assistance. We apologize for the inconvenience."
+  [raw] case 4 (refund): paid once, customer told it FAILED       model asked ['orders_get_order(58213)', 'payments_refund(58213)'] | tries ['orders_get_order(58213) -> ok', 'payments_refund(58213) -> HTTP 504'] | courier hit 0x, refunds paid 1 | 5.9s
+      reply: "I'm sorry for the inconvenience caused. There was an issue with processing your refund. Could you please try again later or contact our support team for further assistance? We appreciate your patience and understanding."
+
+== retry_all ==
+  [retry_all] case 1 (busy): ok                                       model asked ['shipping_track_package(64410)'] | tries ['shipping_track_package(64410) -> HTTP 503', 'shipping_track_package(64410) -> HTTP 503', 'shipping_track_package(64410) -> ok'] | courier hit 3x, refunds paid 0 | 6.0s
+      reply: 'Your order 64410 is currently "out for delivery, Andheri East" and is expected to be delivered by 2026-11-05.'
+  [retry_all] case 1 (busy): ok                                       model asked ['shipping_track_package(64410)'] | tries ['shipping_track_package(64410) -> HTTP 503', 'shipping_track_package(64410) -> HTTP 503', 'shipping_track_package(64410) -> ok'] | courier hit 3x, refunds paid 0 | 6.1s
+      reply: 'Your order 64410 is currently "out for delivery, Andheri East" and is expected to be delivered by 2026-11-05.'
+  [retry_all] case 1 (busy): ok                                       model asked ['shipping_track_package(64410)'] | tries ['shipping_track_package(64410) -> HTTP 503', 'shipping_track_package(64410) -> HTTP 503', 'shipping_track_package(64410) -> ok'] | courier hit 3x, refunds paid 0 | 6.3s
+      reply: 'Your order 64410 is currently "out for delivery, Andheri East" and is expected to be delivered by 2026-11-05.'
+  [retry_all] case 2 (wrong_call): customer not told it was delivered on the 18th model asked ['shipping_track_package(58213)'] | tries ['shipping_track_package(58213) -> HTTP 404', 'shipping_track_package(58213) -> HTTP 404', 'shipping_track_package(58213) -> HTTP 404'] | courier hit 3x, refunds paid 0 | 4.7s
+      reply: 'Your order 58213 (wireless headphones) could not be found. Please double-check the order ID or contact our support team for further assistance.'
+  [retry_all] case 2 (wrong_call): customer not told it was delivered on the 18th model asked ['shipping_track_package(58213)'] | tries ['shipping_track_package(58213) -> HTTP 404', 'shipping_track_package(58213) -> HTTP 404', 'shipping_track_package(58213) -> HTTP 404'] | courier hit 3x, refunds paid 0 | 5.7s
+      reply: "I'm sorry, but I couldn't find any information about your order 58213. It seems there might be an issue with the order number or the tracking details. Could you please double-check the order number and provide any additional details you might have?"
+  [retry_all] case 2 (wrong_call): customer not told it was delivered on the 18th model asked ['shipping_track_package(58213)'] | tries ['shipping_track_package(58213) -> HTTP 404', 'shipping_track_package(58213) -> HTTP 404', 'shipping_track_package(58213) -> HTTP 404'] | courier hit 3x, refunds paid 0 | 5.8s
+      reply: "I'm sorry, but I couldn't find any information about your order 58213. It seems there might be an issue with the order number or the tracking details. Could you please double-check the order number and provide any additional details you might have?"
+  [retry_all] case 3 (down): customer told nothing useful             model asked ['shipping_track_package(64412)'] | tries ['shipping_track_package(64412) -> HTTP 503', 'shipping_track_package(64412) -> HTTP 503', 'shipping_track_package(64412) -> HTTP 503'] | courier hit 3x, refunds paid 0 | 6.3s
+      reply: "I'm sorry, but I'm unable to track the package for order 64412 at the moment. The system is experiencing an issue. Could you please try again later or contact our support team for further assistance?"
+  [retry_all] case 3 (down): customer told nothing useful             model asked ['shipping_track_package(64412)'] | tries ['shipping_track_package(64412) -> HTTP 503', 'shipping_track_package(64412) -> HTTP 503', 'shipping_track_package(64412) -> HTTP 503'] | courier hit 3x, refunds paid 0 | 6.1s
+      reply: "I'm sorry, but I'm unable to track the package for order 64412 at the moment. The system is experiencing some issues. Please try again later or contact our customer support for further assistance."
+  [retry_all] case 3 (down): customer told nothing useful             model asked ['shipping_track_package(64412)'] | tries ['shipping_track_package(64412) -> HTTP 503', 'shipping_track_package(64412) -> HTTP 503', 'shipping_track_package(64412) -> HTTP 503'] | courier hit 3x, refunds paid 0 | 6.1s
+      reply: "I'm sorry, but I'm unable to track the package for order 64412 at the moment. The system is experiencing an issue. Please try again later or contact our customer support for further assistance."
+  [retry_all] case 4 (refund): refund PAID 2 TIMES                      model asked ['payments_refund(58213)'] | tries ['payments_refund(58213) -> HTTP 504', 'payments_refund(58213) -> ok'] | courier hit 0x, refunds paid 2 | 5.7s
+      reply: 'We have processed the refund for order 58213. The refund amount of ₹2499 has been credited back to your original payment method. If you have any further questions, feel free to ask!'
+  [retry_all] case 4 (refund): refund PAID 2 TIMES                      model asked ['payments_refund(58213)'] | tries ['payments_refund(58213) -> HTTP 504', 'payments_refund(58213) -> ok'] | courier hit 0x, refunds paid 2 | 5.3s
+      reply: 'We have processed the refund for order 58213. The refund amount of ₹2499 has been issued back to your original payment method. If you have any further questions, feel free to ask!'
+  [retry_all] case 4 (refund): refund PAID 2 TIMES                      model asked ['payments_refund(58213)'] | tries ['payments_refund(58213) -> HTTP 504', 'payments_refund(58213) -> ok'] | courier hit 0x, refunds paid 2 | 6.9s
+      reply: 'We have initiated the refund process for your order 58213. The refund amount of ₹2499 has been processed and will be credited back to your original payment method. You will receive a refund confirmation once the transaction is complete. If you have any further questions, feel free to ask!'
+
+== smart ==
+  [smart] case 1 (busy): ok                                       model asked ['shipping_track_package(64410)'] | tries ['shipping_track_package(64410) -> HTTP 503', 'shipping_track_package(64410) -> HTTP 503', 'shipping_track_package(64410) -> ok'] | courier hit 3x, refunds paid 0 | 6.6s
+      reply: 'Your order 64410 is currently "out for delivery, Andheri East" and is expected to be delivered by 2026-11-05.'
+  [smart] case 1 (busy): ok                                       model asked ['shipping_track_package(64410)'] | tries ['shipping_track_package(64410) -> HTTP 503', 'shipping_track_package(64410) -> HTTP 503', 'shipping_track_package(64410) -> ok'] | courier hit 3x, refunds paid 0 | 5.8s
+      reply: 'Your order 64410 is currently "out for delivery, Andheri East" and is expected to be delivered by 2026-11-05.'
+  [smart] case 1 (busy): ok                                       model asked ['shipping_track_package(64410)'] | tries ['shipping_track_package(64410) -> HTTP 503', 'shipping_track_package(64410) -> HTTP 503', 'shipping_track_package(64410) -> ok'] | courier hit 3x, refunds paid 0 | 6.2s
+      reply: 'Your order 64410 is currently "out for delivery, Andheri East" and is expected to be delivered by 2026-11-05. The package is on its way!'
+  [smart] case 2 (wrong_call): ok                                       model asked ['shipping_track_package(58213)'] | tries ['shipping_track_package(58213) -> HTTP 404, sent back to the model'] | courier hit 1x, refunds paid 0 | 4.1s
+      reply: 'Your order 58213 (wireless headphones) was delivered on 2026-10-18. If you need further assistance, feel free to ask!'
+  [smart] case 2 (wrong_call): ok                                       model asked ['shipping_track_package(58213)'] | tries ['shipping_track_package(58213) -> HTTP 404, sent back to the model'] | courier hit 1x, refunds paid 0 | 4.0s
+      reply: 'Your order 58213 (wireless headphones) was delivered on 2026-10-18. If you need further assistance, feel free to ask!'
+  [smart] case 2 (wrong_call): ok                                       model asked ['shipping_track_package(58213)'] | tries ['shipping_track_package(58213) -> HTTP 404, sent back to the model'] | courier hit 1x, refunds paid 0 | 4.0s
+      reply: 'Your order 58213 (wireless headphones) was delivered on 2026-10-18. If you need further assistance, feel free to ask!'
+  [smart] case 3 (down): ok                                       model asked ['shipping_track_package(64412)'] | tries ['shipping_track_package(64412) -> HTTP 503', 'shipping_track_package(64412) -> HTTP 503', 'shipping_track_package(64412) -> HTTP 503', 'shipping_track_package(64412) -> fallback: last scan from our database'] | courier hit 3x, refunds paid 0 | 7.9s
+      reply: 'The package for your order 64412 (water bottle) was last scanned at the Delhi air cargo hub on 2026-11-03. However, live tracking is currently unavailable, and this is the last update we have. Please check back later for any updates.'
+  [smart] case 3 (down): ok                                       model asked ['shipping_track_package(64412)'] | tries ['shipping_track_package(64412) -> HTTP 503', 'shipping_track_package(64412) -> HTTP 503', 'shipping_track_package(64412) -> HTTP 503', 'shipping_track_package(64412) -> fallback: last scan from our database'] | courier hit 3x, refunds paid 0 | 7.7s
+      reply: 'The last known update for your order 64412 (water bottle) was on November 3, 2026, at the Delhi air cargo hub. Unfortunately, live tracking is currently unavailable, and this is the last scan in our records. Please check back later for any updates.'
+  [smart] case 3 (down): ok                                       model asked ['shipping_track_package(64412)'] | tries ['shipping_track_package(64412) -> HTTP 503', 'shipping_track_package(64412) -> HTTP 503', 'shipping_track_package(64412) -> HTTP 503', 'shipping_track_package(64412) -> fallback: last scan from our database'] | courier hit 3x, refunds paid 0 | 7.7s
+      reply: 'The last known location of your order 64412 (water bottle) is at the Delhi air cargo hub, as of November 3, 2026. Unfortunately, live tracking is currently unavailable, and we only have this last scan record. Let me know if you need further assistance!'
+  [smart] case 4 (refund): ok                                       model asked ['payments_refund(58213)'] | tries ['payments_refund(58213) -> HTTP 504', 'payments_refund(58213) -> ok'] | courier hit 0x, refunds paid 1 | 6.3s
+      reply: 'We have initiated the refund process for your order 58213. The refund amount of ₹2499 will be processed back to your original payment method. You will receive a refund confirmation once the transaction is complete. If you have any further questions, feel free to ask!'
+  [smart] case 4 (refund): ok                                       model asked ['payments_refund(58213)'] | tries ['payments_refund(58213) -> HTTP 504', 'payments_refund(58213) -> ok'] | courier hit 0x, refunds paid 1 | 7.0s
+      reply: 'We have initiated a full refund for your order 58213. The refund amount of ₹2499 has been processed and will be returned to your original payment method. You will receive a refund confirmation once the process is complete. If you have any further questions, feel free to ask!'
+  [smart] case 4 (refund): ok                                       model asked ['payments_refund(58213)'] | tries ['payments_refund(58213) -> HTTP 504', 'payments_refund(58213) -> ok'] | courier hit 0x, refunds paid 1 | 6.6s
+      reply: 'We have initiated the refund for your order 58213. The refund amount of ₹2499 has been processed and will be credited back to your original payment method. You will receive a refund confirmation once the transaction is completed. Let us know if you need further assistance!'
+
+== summary ==
+      raw: 0 of 12 right
+    case 1 (busy): right 0 of 3, courier hit [1], refunds paid [0], tool calls the model asked for [1], wrong: customer not told where it is
+    case 2 (wrong_call): right 0 of 3, courier hit [1], refunds paid [0], tool calls the model asked for [1], wrong: customer not told it was delivered on the 18th
+    case 3 (down): right 0 of 3, courier hit [1], refunds paid [0], tool calls the model asked for [1], wrong: customer told nothing useful
+    case 4 (refund): right 0 of 3, courier hit [0], refunds paid [1], tool calls the model asked for [1, 2], wrong: paid once, customer told it FAILED
+retry_all: 3 of 12 right
+    case 1 (busy): right 3 of 3, courier hit [3], refunds paid [0], tool calls the model asked for [1]
+    case 2 (wrong_call): right 0 of 3, courier hit [3], refunds paid [0], tool calls the model asked for [1], wrong: customer not told it was delivered on the 18th
+    case 3 (down): right 0 of 3, courier hit [3], refunds paid [0], tool calls the model asked for [1], wrong: customer told nothing useful
+    case 4 (refund): right 0 of 3, courier hit [0], refunds paid [2], tool calls the model asked for [1], wrong: refund PAID 2 TIMES
+    smart: 12 of 12 right
+    case 1 (busy): right 3 of 3, courier hit [3], refunds paid [0], tool calls the model asked for [1]
+    case 2 (wrong_call): right 3 of 3, courier hit [1], refunds paid [0], tool calls the model asked for [1]
+    case 3 (down): right 3 of 3, courier hit [3], refunds paid [0], tool calls the model asked for [1]
+    case 4 (refund): right 3 of 3, courier hit [0], refunds paid [1], tool calls the model asked for [1]

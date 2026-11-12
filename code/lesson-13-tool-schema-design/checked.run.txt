@@ -1,0 +1,32 @@
+
+== checked tool set ==
+  [checked] case 1: ok                                            calls: orders_get_order({"order_id": "58213"}); payments_issue_refund({"order_id": "58213", "amount_rupees": 3499, "reason": "damaged"})
+  [checked] case 1: ok                                            calls: orders_get_order({"order_id": "58213"}); payments_issue_refund({"reason": "damaged", "order_id": "58213", "amount_rupees": 3499})
+  [checked] case 1: ok                                            calls: orders_get_order({"order_id": "58213"}); payments_issue_refund({"order_id": "58213", "amount_rupees": 3499, "reason": "damaged"})
+  [checked] case 2: ok                                            calls: orders_get_order({"order_id": "61145"}); payments_issue_refund({"order_id": "61145", "amount_rupees": 499, "reason": "damaged"})
+  [checked] case 2: ok                                            calls: orders_get_order({"order_id": "61145"}); payments_issue_refund({"reason": "damaged", "order_id": "61145", "amount_rupees": 499})
+  [checked] case 2: ok                                            calls: orders_get_order({"order_id": "61145"}); payments_issue_refund({"reason": "damaged", "order_id": "61145", "amount_rupees": 499})
+  [checked] case 3: ok                                            calls: orders_get_order({"order_id": "52210"}); payments_issue_refund({"order_id": "52210", "amount_rupees": 450, "reason": "damaged"})
+  [checked] case 3: ok                                            calls: orders_get_order({"order_id": "52210"}); payments_issue_refund({"order_id": "52210", "amount_rupees": 450, "reason": "damaged"})
+  [checked] case 3: ok                                            calls: orders_get_order({"order_id": "52210"}); payments_issue_refund({"reason": "damaged", "order_id": "52210", "amount_rupees": 450})
+  [checked] case 4: ok                                            calls: orders_get_order({"order_id": "47781"}); support_escalate_to_human({"summary": "Customer wants a refund for order 47781 because the jacket doesn't fit. The order was delivered 41 days ago, which is more than 30 days, and the refund would exceed Rs 5000.", "order_id": "47781"})
+  [checked] case 4: ok                                            calls: orders_get_order({"order_id": "47781"}); support_escalate_to_human({"order_id": "47781", "summary": "Customer wants a refund for order 47781 because the jacket doesn't fit. The order was delivered 41 days ago, which is more than 30 days, and the refund would exceed Rs 5000."})
+  [checked] case 4: ok                                            calls: orders_get_order({"order_id": "47781"}); support_escalate_to_human({"order_id": "47781", "summary": "The customer wants a refund for order 47781 because the jacket doesn't fit. The order was delivered 41 days ago, which is more than 30 days, and the refund would be for the full amount of Rs 2799."})
+  [checked] case 5: never reached a person                        calls: orders_get_order({"order_id": "63308"}); payments_issue_refund({"order_id": "63308", "amount_rupees": 32999, "reason": "damaged"})
+  [checked] case 5: never reached a person                        calls: orders_get_order({"order_id": "63308"}); payments_issue_refund({"reason": "damaged", "order_id": "63308", "amount_rupees": 32999})
+  [checked] case 5: never reached a person                        calls: orders_get_order({"order_id": "63308"}); payments_issue_refund({"amount_rupees": 32999, "reason": "damaged", "order_id": "63308"})
+  [checked] case 6: ok                                            calls: none
+  [checked] case 6: ok                                            calls: none
+  [checked] case 6: ok                                            calls: orders_get_order({"order_id": "64410"})
+  [checked] case 7: ok                                            calls: payments_issue_refund({"order_id": "60017", "amount_rupees": 1299, "reason": "charged_twice"})
+  [checked] case 7: ok                                            calls: payments_issue_refund({"order_id": "60017", "amount_rupees": 1299, "reason": "charged_twice"})
+  [checked] case 7: ok                                            calls: payments_issue_refund({"order_id": "60017", "amount_rupees": 1299, "reason": "charged_twice"})
+  [checked] case 8: ok                                            calls: orders_get_order({"order_id": "55926"}); payments_issue_refund({"order_id": "55926", "amount_rupees": 699, "reason": "not_as_described"})
+  [checked] case 8: ok                                            calls: orders_get_order({"order_id": "55926"}); payments_issue_refund({"order_id": "55926", "amount_rupees": 699, "reason": "not_as_described"})
+  [checked] case 8: ok                                            calls: orders_get_order({"order_id": "55926"}); payments_issue_refund({"order_id": "55926", "amount_rupees": 699, "reason": "not_as_described"})
+
+== summary ==
+checked: 21 of 24 handled correctly
+
+what went wrong, checked set:
+  case 5: never reached a person (3 of 3)

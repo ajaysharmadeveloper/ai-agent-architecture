@@ -1,0 +1,44 @@
+
+== routed_by_goal ==
+  [routed_by_goal] case  1: ok                                           route=money_back calls: orders_get_order({"order_id": "58213"}); payments_issue_refund({"order_id": "58213", "amount_rupees": 3499, "reason": "damaged"})
+  [routed_by_goal] case  1: ok                                           route=money_back calls: orders_get_order({"order_id": "58213"}); payments_issue_refund({"amount_rupees": 3499, "reason": "damaged", "order_id": "58213"})
+  [routed_by_goal] case  1: ok                                           route=money_back calls: orders_get_order({"order_id": "58213"}); payments_issue_refund({"order_id": "58213", "amount_rupees": 3499, "reason": "damaged"})
+  [routed_by_goal] case  2: ok                                           route=fix_the_item calls: payments_issue_store_credit({"amount_rupees": 699, "order_id": "55926"})
+  [routed_by_goal] case  2: ok                                           route=fix_the_item calls: payments_issue_store_credit({"amount_rupees": 699, "order_id": "55926"})
+  [routed_by_goal] case  2: ok                                           route=fix_the_item calls: payments_issue_store_credit({"order_id": "55926", "amount_rupees": 699})
+  [routed_by_goal] case  3: ok                                           route=money_back calls: orders_get_order({"order_id": "66120"}); orders_cancel_order({"order_id": "66120", "reason": "ordered the wrong speaker by mistake"})
+  [routed_by_goal] case  3: ok                                           route=money_back calls: orders_get_order({"order_id": "66120"}); orders_cancel_order({"order_id": "66120", "reason": "ordered the wrong speaker by mistake"})
+  [routed_by_goal] case  3: ok                                           route=money_back calls: orders_get_order({"order_id": "66120"}); orders_cancel_order({"order_id": "66120", "reason": "ordered the wrong speaker by mistake"})
+  [routed_by_goal] case  4: ok                                           route=where_is_it calls: shipping_track_package({"order_id": "64410"})
+  [routed_by_goal] case  4: ok                                           route=where_is_it calls: shipping_track_package({"order_id": "64410"})
+  [routed_by_goal] case  4: ok                                           route=where_is_it calls: shipping_track_package({"order_id": "64410"})
+  [routed_by_goal] case  5: ok                                           route=my_account calls: account_update_address({"customer_id": "40917", "address": "14 MG Road, Pune 411001"})
+  [routed_by_goal] case  5: ok                                           route=my_account calls: account_update_address({"customer_id": "40917", "address": "14 MG Road, Pune 411001"})
+  [routed_by_goal] case  5: ok                                           route=my_account calls: account_update_address({"customer_id": "40917", "address": "14 MG Road, Pune 411001"})
+  [routed_by_goal] case  6: ok                                           route=my_account calls: orders_update_delivery_address({"order_id": "64410", "address": "22 Park Street, Kolkata 700016"})
+  [routed_by_goal] case  6: ok                                           route=my_account calls: orders_update_delivery_address({"order_id": "64410", "address": "22 Park Street, Kolkata 700016"})
+  [routed_by_goal] case  6: ok                                           route=my_account calls: orders_update_delivery_address({"order_id": "64410", "address": "22 Park Street, Kolkata 700016"})
+  [routed_by_goal] case  7: ok                                           route=fix_the_item calls: orders_request_exchange({"order_id": "60017", "new_variant": "white"})
+  [routed_by_goal] case  7: ok                                           route=fix_the_item calls: orders_request_exchange({"order_id": "60017", "new_variant": "white"})
+  [routed_by_goal] case  7: ok                                           route=fix_the_item calls: orders_request_exchange({"order_id": "60017", "new_variant": "white"})
+  [routed_by_goal] case  8: ok                                           route=fix_the_item calls: orders_request_return({"order_id": "61145", "reason": "sending the screen protector back"})
+  [routed_by_goal] case  8: ok                                           route=fix_the_item calls: orders_request_return({"reason": "sending the screen protector back", "order_id": "61145"})
+  [routed_by_goal] case  8: ok                                           route=fix_the_item calls: orders_request_return({"order_id": "61145", "reason": "sending the screen protector back"})
+  [routed_by_goal] case  9: ok                                           route=money_back calls: payments_refund_shipping_fee({"order_id": "52210"})
+  [routed_by_goal] case  9: ok                                           route=money_back calls: payments_refund_shipping_fee({"order_id": "52210"})
+  [routed_by_goal] case  9: ok                                           route=money_back calls: payments_refund_shipping_fee({"order_id": "52210"})
+  [routed_by_goal] case 10: ok                                           route=fix_the_item calls: warranty_file_claim({"order_id": "59034", "problem": "stopped working"})
+  [routed_by_goal] case 10: ok                                           route=fix_the_item calls: warranty_file_claim({"order_id": "59034", "problem": "stopped working"})
+  [routed_by_goal] case 10: ok                                           route=fix_the_item calls: warranty_file_claim({"order_id": "59034", "problem": "stopped working"})
+  [routed_by_goal] case 11: ok                                           route=fix_the_item calls: orders_get_order({"order_id": "63308"}); support_escalate_to_human({"order_id": "63308", "summary": "TV arrived with a cracked screen, requesting a refund."})
+  [routed_by_goal] case 11: ok                                           route=fix_the_item calls: orders_get_order({"order_id": "63308"}); support_escalate_to_human({"order_id": "63308", "summary": "TV arrived with a cracked screen; refund requested."})
+  [routed_by_goal] case 11: ok                                           route=fix_the_item calls: orders_get_order({"order_id": "63308"}); support_escalate_to_human({"order_id": "63308", "summary": "TV arrived with a cracked screen, refund requested."})
+  [routed_by_goal] case 12: ok                                           route=paperwork calls: support_create_ticket({"order_id": "58213", "note": "The invoice for order 58213 shows the old company name. Please correct it."})
+  [routed_by_goal] case 12: ok                                           route=paperwork calls: support_create_ticket({"order_id": "58213", "note": "The invoice for order 58213 shows the old company name. Please correct it."})
+  [routed_by_goal] case 12: ok                                           route=paperwork calls: support_create_ticket({"order_id": "58213", "note": "The invoice for order 58213 shows the old company name. Please correct it."})
+
+== summary ==
+routed_by_goal: 36 of 36 right | prompt tokens, first agent step: 663-1222 | per message, all steps: 2736 avg
+
+what went wrong, routed_by_goal:
+  nothing

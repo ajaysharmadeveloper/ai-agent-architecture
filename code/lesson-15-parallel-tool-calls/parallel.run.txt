@@ -1,0 +1,62 @@
+
+== sequential ==
+  [sequential] case 1: ok                                       calls per turn [3] tools 4.52s | shipping_track_package({"order_id": "64410"}) + shipping_track_package({"order_id": "64411"}) + shipping_track_package({"order_id": "64412"})
+  [sequential] case 1: ok                                       calls per turn [3] tools 4.52s | shipping_track_package({"order_id": "64410"}) + shipping_track_package({"order_id": "64411"}) + shipping_track_package({"order_id": "64412"})
+  [sequential] case 1: ok                                       calls per turn [3] tools 4.50s | shipping_track_package({"order_id": "64410"}) + shipping_track_package({"order_id": "64411"}) + shipping_track_package({"order_id": "64412"})
+  [sequential] case 2: ok                                       calls per turn [3] tools 1.53s | orders_get_order({"order_id": "58213"}) + orders_get_order({"order_id": "61145"}) + orders_get_order({"order_id": "52210"})
+  [sequential] case 2: ok                                       calls per turn [3] tools 1.53s | orders_get_order({"order_id": "58213"}) + orders_get_order({"order_id": "61145"}) + orders_get_order({"order_id": "52210"})
+  [sequential] case 2: ok                                       calls per turn [3] tools 1.51s | orders_get_order({"order_id": "58213"}) + orders_get_order({"order_id": "61145"}) + orders_get_order({"order_id": "52210"})
+  [sequential] case 3: ok                                       calls per turn [2] tools 1.81s | account_update_address({"customer_id": "40917", "address": "14 MG Road, Pune 411001"}) + orders_ship_replacement({"order_id": "58213"})
+  [sequential] case 3: ok                                       calls per turn [2] tools 1.81s | account_update_address({"customer_id": "40917", "address": "14 MG Road, Pune 411001"}) + orders_ship_replacement({"order_id": "58213"})
+  [sequential] case 3: ok                                       calls per turn [2] tools 1.81s | account_update_address({"customer_id": "40917", "address": "14 MG Road, Pune 411001"}) + orders_ship_replacement({"order_id": "58213"})
+
+== parallel ==
+  [parallel] case 1: ok                                       calls per turn [3] tools 1.54s | shipping_track_package({"order_id": "64410"}) + shipping_track_package({"order_id": "64411"}) + shipping_track_package({"order_id": "64412"})
+  [parallel] case 1: ok                                       calls per turn [3] tools 1.51s | shipping_track_package({"order_id": "64410"}) + shipping_track_package({"order_id": "64411"}) + shipping_track_package({"order_id": "64412"})
+  [parallel] case 1: ok                                       calls per turn [3] tools 1.51s | shipping_track_package({"order_id": "64410"}) + shipping_track_package({"order_id": "64411"}) + shipping_track_package({"order_id": "64412"})
+  [parallel] case 2: ok                                       calls per turn [3] tools 0.51s | orders_get_order({"order_id": "58213"}) + orders_get_order({"order_id": "61145"}) + orders_get_order({"order_id": "52210"})
+  [parallel] case 2: ok                                       calls per turn [3] tools 0.50s | orders_get_order({"order_id": "58213"}) + orders_get_order({"order_id": "61145"}) + orders_get_order({"order_id": "52210"})
+  [parallel] case 2: ok                                       calls per turn [3] tools 0.51s | orders_get_order({"order_id": "58213"}) + orders_get_order({"order_id": "61145"}) + orders_get_order({"order_id": "52210"})
+  [parallel] case 3: replacement shipped to the OLD address   calls per turn [2] tools 1.01s | account_update_address({"customer_id": "40917", "address": "14 MG Road, Pune 411001"}) + orders_ship_replacement({"order_id": "58213"})
+  [parallel] case 3: replacement shipped to the OLD address   calls per turn [2] tools 1.01s | account_update_address({"customer_id": "40917", "address": "14 MG Road, Pune 411001"}) + orders_ship_replacement({"order_id": "58213"})
+  [parallel] case 3: replacement shipped to the OLD address   calls per turn [2] tools 1.01s | account_update_address({"customer_id": "40917", "address": "14 MG Road, Pune 411001"}) + orders_ship_replacement({"order_id": "58213"})
+
+== parallel_prompted ==
+  [parallel_prompted] case 1: ok                                       calls per turn [3] tools 1.51s | shipping_track_package({"order_id": "64410"}) + shipping_track_package({"order_id": "64411"}) + shipping_track_package({"order_id": "64412"})
+  [parallel_prompted] case 1: ok                                       calls per turn [3] tools 1.51s | shipping_track_package({"order_id": "64410"}) + shipping_track_package({"order_id": "64411"}) + shipping_track_package({"order_id": "64412"})
+  [parallel_prompted] case 1: ok                                       calls per turn [3] tools 1.51s | shipping_track_package({"order_id": "64410"}) + shipping_track_package({"order_id": "64411"}) + shipping_track_package({"order_id": "64412"})
+  [parallel_prompted] case 2: ok                                       calls per turn [3] tools 0.51s | orders_get_order({"order_id": "58213"}) + orders_get_order({"order_id": "61145"}) + orders_get_order({"order_id": "52210"})
+  [parallel_prompted] case 2: ok                                       calls per turn [3] tools 0.51s | orders_get_order({"order_id": "58213"}) + orders_get_order({"order_id": "61145"}) + orders_get_order({"order_id": "52210"})
+  [parallel_prompted] case 2: ok                                       calls per turn [3] tools 0.51s | orders_get_order({"order_id": "58213"}) + orders_get_order({"order_id": "61145"}) + orders_get_order({"order_id": "52210"})
+  [parallel_prompted] case 3: replacement shipped to the OLD address   calls per turn [2] tools 1.01s | account_update_address({"customer_id": "40917", "address": "14 MG Road, Pune 411001"}) + orders_ship_replacement({"order_id": "58213"})
+  [parallel_prompted] case 3: replacement shipped to the OLD address   calls per turn [2] tools 1.00s | account_update_address({"customer_id": "40917", "address": "14 MG Road, Pune 411001"}) + orders_ship_replacement({"order_id": "58213"})
+  [parallel_prompted] case 3: replacement shipped to the OLD address   calls per turn [2] tools 1.00s | account_update_address({"customer_id": "40917", "address": "14 MG Road, Pune 411001"}) + orders_ship_replacement({"order_id": "58213"})
+
+== safe ==
+  [safe] case 1: ok                                       calls per turn [3] tools 1.51s | shipping_track_package({"order_id": "64410"}) + shipping_track_package({"order_id": "64411"}) + shipping_track_package({"order_id": "64412"})
+  [safe] case 1: ok                                       calls per turn [3] tools 1.51s | shipping_track_package({"order_id": "64410"}) + shipping_track_package({"order_id": "64411"}) + shipping_track_package({"order_id": "64412"})
+  [safe] case 1: ok                                       calls per turn [3] tools 1.51s | shipping_track_package({"order_id": "64410"}) + shipping_track_package({"order_id": "64411"}) + shipping_track_package({"order_id": "64412"})
+  [safe] case 2: ok                                       calls per turn [3] tools 0.51s | orders_get_order({"order_id": "58213"}) + orders_get_order({"order_id": "61145"}) + orders_get_order({"order_id": "52210"})
+  [safe] case 2: ok                                       calls per turn [3] tools 0.51s | orders_get_order({"order_id": "58213"}) + orders_get_order({"order_id": "61145"}) + orders_get_order({"order_id": "52210"})
+  [safe] case 2: ok                                       calls per turn [3] tools 0.51s | orders_get_order({"order_id": "58213"}) + orders_get_order({"order_id": "61145"}) + orders_get_order({"order_id": "52210"})
+  [safe] case 3: ok                                       calls per turn [2] tools 1.81s | account_update_address({"customer_id": "40917", "address": "14 MG Road, Pune 411001"}) + orders_ship_replacement({"order_id": "58213"})
+  [safe] case 3: ok                                       calls per turn [2] tools 1.82s | account_update_address({"customer_id": "40917", "address": "14 MG Road, Pune 411001"}) + orders_ship_replacement({"order_id": "58213"})
+  [safe] case 3: ok                                       calls per turn [2] tools 1.81s | account_update_address({"customer_id": "40917", "address": "14 MG Road, Pune 411001"}) + orders_ship_replacement({"order_id": "58213"})
+
+== summary ==
+       sequential: 9 of 9 right
+    case 1 (track): tools 4.50-4.52s, calls in first turn [3], right 3 of 3
+    case 2 (lookup): tools 1.51-1.53s, calls in first turn [3], right 3 of 3
+    case 3 (move_then_ship): tools 1.81-1.81s, calls in first turn [2], right 3 of 3
+         parallel: 6 of 9 right
+    case 1 (track): tools 1.51-1.54s, calls in first turn [3], right 3 of 3
+    case 2 (lookup): tools 0.50-0.51s, calls in first turn [3], right 3 of 3
+    case 3 (move_then_ship): tools 1.01-1.01s, calls in first turn [2], right 0 of 3, wrong: replacement shipped to the OLD address
+parallel_prompted: 6 of 9 right
+    case 1 (track): tools 1.51-1.51s, calls in first turn [3], right 3 of 3
+    case 2 (lookup): tools 0.51-0.51s, calls in first turn [3], right 3 of 3
+    case 3 (move_then_ship): tools 1.00-1.01s, calls in first turn [2], right 0 of 3, wrong: replacement shipped to the OLD address
+             safe: 9 of 9 right
+    case 1 (track): tools 1.51-1.51s, calls in first turn [3], right 3 of 3
+    case 2 (lookup): tools 0.51-0.51s, calls in first turn [3], right 3 of 3
+    case 3 (move_then_ship): tools 1.81-1.82s, calls in first turn [2], right 3 of 3
