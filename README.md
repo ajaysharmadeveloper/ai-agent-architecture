@@ -4,7 +4,7 @@ This is the code from my YouTube course, AI Agent Architecture, on [@ajaysharmaA
 
 ## Running it
 
-Everything here runs on a local model through [Ollama](https://ollama.com). You don't need an API key, and nothing leaves your machine.
+Almost everything here runs on a local model through [Ollama](https://ollama.com), so you don't need an API key and nothing leaves your machine. One file is the exception: lesson 10's `support_agent.py` calls Claude and reads `ANTHROPIC_API_KEY` from your environment.
 
 ```
 ollama pull qwen3:8b
