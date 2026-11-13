@@ -1,0 +1,34 @@
+Lesson 17, the same support_server.py plugged into Claude Code. No change to the server.
+Run 2026-11-12, headless, with a throwaway config so no user settings were touched:
+
+  claude -p "Where is my order 64410? Use the support tools." \
+    --mcp-config support.json --strict-mcp-config \
+    --allowedTools "mcp__support__shipping_track_package,mcp__support__orders_get_order"
+
+  support.json = {"mcpServers":{"support":{"command":"python","args":["/full/path/to/support_server.py"]}}}
+
+init: mcp_servers [{"name":"support","status":"connected"}]
+      tools include mcp__support__orders_get_order, mcp__support__payments_refund, mcp__support__shipping_track_package
+
+TOOL_USE ToolSearch {"query":"select:mcp__support__orders_get_order,mcp__support__shipping_track_package","max_results":2}
+RESULT   tool_reference mcp__support__orders_get_order, tool_reference mcp__support__shipping_track_package
+TOOL_USE mcp__support__orders_get_order {"order_id":"64410"}
+RESULT   {"order_id": "64410", "item": "running shoes", "price_inr": 3199, "status": "shipped", "delivered_on": null}
+TOOL_USE mcp__support__shipping_track_package {"order_id":"64410"}
+RESULT   {"order_id": "64410", "now_at": "Andheri East delivery hub"}
+FINAL    Order 64410 (running shoes, ₹3,199) has shipped but hasn't been delivered yet. Right now the package is
+         at the **Andheri East delivery hub**.
+
+Note: the final reply also carried one sentence the tools did not support ("Your package was at the same place
+when this was checked earlier today."). Not quoted anywhere in the lesson.
+
+---
+Run 2026-11-13, the real `claude mcp add` line, against a throwaway config folder (CLAUDE_CONFIG_DIR), so no
+user settings were touched:
+
+  claude mcp add support -- python /full/path/to/support_server.py
+  -> Added stdio MCP server support with command: python /full/path/to/support_server.py to local config
+
+  claude mcp list
+  -> Checking MCP server health…
+     support: python /full/path/to/support_server.py - ✔ Connected

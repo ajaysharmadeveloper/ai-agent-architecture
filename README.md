@@ -28,6 +28,8 @@ The `*.run.txt` files are the real runs you see in the videos, kept so you can c
 | 14 | Tool Selection and Routing in AI Agents | [code/lesson-14-tool-selection-and-routing](code/lesson-14-tool-selection-and-routing) |
 | 15 | Parallel vs Sequential Tool Calls in AI Agents | [code/lesson-15-parallel-tool-calls](code/lesson-15-parallel-tool-calls) |
 | 16 | Tool Error Handling and Retries for AI Agents | [code/lesson-16-error-handling-retries-fallbacks](code/lesson-16-error-handling-retries-fallbacks) |
+| 17 | MCP Explained: Model Context Protocol for Agents | [code/lesson-17-model-context-protocol](code/lesson-17-model-context-protocol) |
+| 18 | RAG Pipeline Design: Chunking to Reranking | [code/lesson-18-rag-pipeline-design](code/lesson-18-rag-pipeline-design) |
 <!-- lessons:end -->
 
 ## Stuck?

@@ -1,0 +1,9 @@
+indexed 57 chunks from 10 documents
+
+vector   top 3: ['returns-and-refunds#3', 'cancellations#0', 'returns-and-refunds#1']
+keyword  top 3: ['returns-and-refunds#2', 'returns-and-refunds#3', 'returns-and-refunds#0']
+hybrid   top 3: ['returns-and-refunds#3', 'returns-and-refunds#2', 'cancellations#0']
+rerank   top 3: ['returns-and-refunds#3', 'cancellations#0', 'returns-and-refunds#0']
+
+the model read 397 tokens
+answer: Since you paid cash on delivery, there is no original payment method to refund. After the return is picked up, we send you a secure link by SMS. You enter your bank account number and IFSC code there, and we pay the refund by bank transfer. It reaches you 7 to 10 working days after you submit the details.

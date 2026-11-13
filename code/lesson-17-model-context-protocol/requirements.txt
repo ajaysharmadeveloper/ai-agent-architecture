@@ -1,0 +1,2 @@
+mcp>=2.3   # the official MCP Python SDK, v2 (FastMCP is now MCPServer)
+pytest     # only for test_server.py

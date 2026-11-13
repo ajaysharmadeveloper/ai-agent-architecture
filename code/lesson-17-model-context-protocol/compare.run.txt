@@ -1,0 +1,90 @@
+tool list, hand-wired vs MCP: the same, apart from the title labels the SDK adds
+MCP tool list as the model receives it:
+[
+  {
+    "type": "function",
+    "function": {
+      "name": "orders_get_order",
+      "description": "Look up one order by its order ID: the item, the price, the status (shipped or delivered) and the\ndelivery date. Changes nothing.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "order_id": {
+            "description": "The 5-digit order number, like 58213.",
+            "pattern": "^[0-9]{5}$",
+            "title": "Order Id",
+            "type": "string"
+          }
+        },
+        "required": [
+          "order_id"
+        ],
+        "title": "orders_get_orderArguments"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "shipping_track_package",
+      "description": "Get where a shipped order's package is right now. Changes nothing. Use this when the customer asks\nwhere an order is. A delivered order has nothing to track.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "order_id": {
+            "description": "The 5-digit order number, like 58213.",
+            "pattern": "^[0-9]{5}$",
+            "title": "Order Id",
+            "type": "string"
+          }
+        },
+        "required": [
+          "order_id"
+        ],
+        "title": "shipping_track_packageArguments"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "payments_refund",
+      "description": "Refund one delivered order in full to the customer's original payment method. Moves money. Call it\nonce per order, and only after the customer asked for a refund.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "order_id": {
+            "description": "The 5-digit order number, like 58213.",
+            "pattern": "^[0-9]{5}$",
+            "title": "Order Id",
+            "type": "string"
+          }
+        },
+        "required": [
+          "order_id"
+        ],
+        "title": "payments_refundArguments"
+      }
+    }
+  }
+]
+
+prompt tokens, no tools at all: 129
+[hand-wired] case 1 run 1 | prompt tokens 466 | calls ['shipping_track_package(64410)'] | reply: "Your order 64410 is currently at the Andheri East delivery hub. It's on its way to you!"
+[mcp] case 1 run 1 | prompt tokens 466 | calls ['shipping_track_package(64410)'] | reply: "Your order 64410 is currently at the Andheri East delivery hub. It's on its way to you!"
+[hand-wired] case 1 run 2 | prompt tokens 466 | calls ['shipping_track_package(64410)'] | reply: "Your order 64410 is currently at the Andheri East delivery hub. It's on its way to you!"
+[mcp] case 1 run 2 | prompt tokens 466 | calls ['shipping_track_package(64410)'] | reply: "Your order 64410 is currently at the Andheri East delivery hub. It's on its way to you!"
+[hand-wired] case 1 run 3 | prompt tokens 466 | calls ['shipping_track_package(64410)'] | reply: 'Your order 64410 is currently at the Andheri East delivery hub.'
+[mcp] case 1 run 3 | prompt tokens 466 | calls ['shipping_track_package(64410)'] | reply: "Your order 64410 is currently at the Andheri East delivery hub. It's on its way to you!"
+[hand-wired] case 2 run 1 | prompt tokens 479 | calls ['orders_get_order(58213)', 'payments_refund(58213)'] | reply: 'Your refund for order 58213 (wireless headphones) has been processed. The amount of ₹2499 will be returned to your original payment method within 5 to 7 working days. If you have any further questions, feel free to ask!'
+[mcp] case 2 run 1 | prompt tokens 479 | calls ['orders_get_order(58213)', 'payments_refund(58213)'] | reply: 'Your refund for order 58213 (wireless headphones) has been processed. The amount of ₹2499 will be returned to your original payment method within 5 to 7 working days. If you have any further questions, feel free to ask!'
+[hand-wired] case 2 run 2 | prompt tokens 479 | calls ['orders_get_order(58213)', 'payments_refund(58213)'] | reply: 'Your refund for order 58213, wireless headphones, has been processed. The amount of ₹2499 will be returned to your original payment method within 5 to 7 working days. If you have any further questions, feel free to ask!'
+[mcp] case 2 run 2 | prompt tokens 479 | calls ['orders_get_order(58213)', 'payments_refund(58213)'] | reply: 'Your refund for order 58213 (wireless headphones) has been processed. The amount of ₹2499 will be returned to your original payment method within 5 to 7 working days. If you have any further questions, feel free to ask!'
+[hand-wired] case 2 run 3 | prompt tokens 479 | calls ['orders_get_order(58213)', 'payments_refund(58213)'] | reply: 'Your refund for order 58213 (wireless headphones) has been processed. The amount of ₹2499 will be returned to your original payment method within 5 to 7 working days. If you have any further questions, feel free to ask!'
+[mcp] case 2 run 3 | prompt tokens 479 | calls ['orders_get_order(58213)', 'payments_refund(58213)'] | reply: 'Your refund for order 58213 (wireless headphones) has been processed. The amount of ₹2499 will be returned to your original payment method within 5 to 7 working days. If you have any further questions, feel free to ask!'
+[hand-wired] case 3 run 1 | prompt tokens 469 | calls ['orders_get_order(64412)'] | reply: "Your order 64412 for a water bottle is currently shipped and has not been delivered yet. Refunds are only available once the order is delivered. Please wait until the order is delivered, and then let me know if you'd like to proceed with a refund."
+[mcp] case 3 run 1 | prompt tokens 469 | calls ['orders_get_order(64412)'] | reply: "Your order 64412 for a water bottle is currently shipped but not yet delivered. According to our refund policy, you can't request a refund until the order is delivered. Please wait until the item is delivered, and then let me know if you need further assistance."
+[hand-wired] case 3 run 2 | prompt tokens 469 | calls ['orders_get_order(64412)'] | reply: "Your order 64412 for a water bottle is currently shipped and has not been delivered yet. Refunds are only available once the order is delivered. Please wait until it is delivered, and then let me know if you'd like to proceed with a refund."
+[mcp] case 3 run 2 | prompt tokens 469 | calls ['orders_get_order(64412)'] | reply: "Your order 64412 for a water bottle is currently shipped and not yet delivered. According to our refund policy, you can't request a refund until the order is delivered. Please wait until the item is delivered, and then let me know if you need further assistance."
+[hand-wired] case 3 run 3 | prompt tokens 469 | calls ['orders_get_order(64412)'] | reply: "Your order 64412 for a water bottle is currently shipped and has not been delivered yet. According to our refund policy, a refund is only possible once the order is delivered. Please wait until the order is delivered, and then let me know if you'd like to proceed with a refund."
+[mcp] case 3 run 3 | prompt tokens 469 | calls ['orders_get_order(64412)'] | reply: "Your order 64412 for a water bottle is currently shipped and not yet delivered. According to our refund policy, you can't request a refund until the order is delivered. Please wait until the item is delivered, and then let me know if you need further assistance."

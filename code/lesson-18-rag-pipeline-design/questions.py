@@ -1,0 +1,53 @@
+"""The test set: 22 things a customer might type, each with the fact that answers it.
+
+`fact` is a phrase that appears exactly once in the help centre. A search "found it" when one of the chunks
+it returns contains that phrase, whole. A chunker that cuts the phrase in half can never find it.
+`says` lists the ways a correct answer can state the fact (any one of them counts). Read the printed
+answers too: a phrase match is a quick check, and the run file keeps every reply so you can judge it yourself.
+"""
+QUESTIONS = [
+    {"q": "I paid cash on delivery. How do I get my refund and how long does it take?",
+     "fact": "7 to 10 working days", "says": ["7 to 10", "7-10"]},
+    {"q": "What is the warranty on the AX-220 Pro?",
+     "fact": "covered for 18 months", "says": ["18 months", "18-month"]},
+    {"q": "Is the wired AX-200 covered for a full year?",
+     "fact": "covered for 6 months", "says": ["6 months", "6-month", "six months"]},
+    {"q": "My payment failed with PAY-4027. What should I do?",
+     "fact": "wait 30 minutes", "says": ["30 minutes"]},
+    {"q": "Checkout showed PAY-5003. What does that mean?",
+     "fact": "not available at your pin code", "says": ["pin code", "pincode"]},
+    {"q": "The app says my parcel arrived but nothing came. What now?",
+     "fact": "within 48 hours of the delivered scan", "says": ["48 hours"]},
+    {"q": "Can I send back earbuds after I opened them?",
+     "fact": "can't be returned once the seal is broken", "says": ["cannot send", "can't send", "cannot return", "can't return", "can't be returned", "cannot be returned", "not be returned"]},
+    {"q": "How many times will the courier try to bring my order?",
+     "fact": "three delivery attempts", "says": ["three", "3 "]},
+    {"q": "The shoes are too small. Can I swap them for a bigger size?",
+     "fact": "within 15 days of delivery", "says": ["15 days"]},
+    {"q": "Do I pay for shipping on a 300 rupee order?",
+     "fact": "flat shipping fee of ₹49", "says": ["49"]},
+    {"q": "I cancelled a prepaid order before it shipped. When do I get my money?",
+     "fact": "within 2 working days, which is faster", "says": ["2 working days", "two working days"]},
+    {"q": "Can I pay cash for a 7,000 rupee order?",
+     "fact": "orders up to ₹5,000", "says": ["5,000", "5000"]},
+    {"q": "My new bottle leaks. Will you replace it?",
+     "fact": "within 7 days of delivery", "says": ["7 days", "seven days"]},
+    {"q": "Can I change where my order is going after I placed it?",
+     "fact": "only until the package leaves our warehouse", "says": ["leaves our warehouse", "leaves the warehouse"]},
+    {"q": "What does DEL-2140 mean?",
+     "fact": "flat number or a landmark was missing", "says": ["flat number", "landmark", "incomplete"]},
+    {"q": "I keep getting ACC-1070 when I sign in. How do I fix it?",
+     "fact": "locked for one hour", "says": ["one hour", "1 hour", "an hour"]},
+    {"q": "My return request shows RET-3310. Why?",
+     "fact": "A return request already exists", "says": ["already"]},
+    {"q": "Checkout failed with PAY-4072. What went wrong?",
+     "fact": "one-time password you typed was wrong", "says": ["password", "otp"]},
+    {"q": "How long does the battery last on the AX-250?",
+     "fact": "lasts up to 18 hours", "says": ["18 hours"]},
+    {"q": "Is the BX-120 waterproof?",
+     "fact": "rated IPX7", "says": ["ipx7"]},
+    {"q": "How heavy is the AX-300?",
+     "fact": "weighs 310 grams", "says": ["310"]},
+    {"q": "Does the AX-210 have a mic for calls?",
+     "fact": "inline microphone", "says": ["has an inline microphone", "has a mic", "has a microphone", "has an inline mic"]},
+]

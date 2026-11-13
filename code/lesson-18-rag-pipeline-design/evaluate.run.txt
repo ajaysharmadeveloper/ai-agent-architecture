@@ -1,0 +1,208 @@
+10 documents, 3012 words, models: embeddinggemma + qwen3:8b
+
+PART 1  search: is the fact in the top 3, and where
+
+  Q1  I paid cash on delivery. How do I get my refund and how long does it take?
+  Q2  What is the warranty on the AX-220 Pro?
+  Q3  Is the wired AX-200 covered for a full year?
+  Q4  My payment failed with PAY-4027. What should I do?
+  Q5  Checkout showed PAY-5003. What does that mean?
+  Q6  The app says my parcel arrived but nothing came. What now?
+  Q7  Can I send back earbuds after I opened them?
+  Q8  How many times will the courier try to bring my order?
+  Q9  The shoes are too small. Can I swap them for a bigger size?
+  Q10 Do I pay for shipping on a 300 rupee order?
+  Q11 I cancelled a prepaid order before it shipped. When do I get my money?
+  Q12 Can I pay cash for a 7,000 rupee order?
+  Q13 My new bottle leaks. Will you replace it?
+  Q14 Can I change where my order is going after I placed it?
+  Q15 What does DEL-2140 mean?
+  Q16 I keep getting ACC-1070 when I sign in. How do I fix it?
+  Q17 My return request shows RET-3310. Why?
+  Q18 Checkout failed with PAY-4072. What went wrong?
+  Q19 How long does the battery last on the AX-250?
+  Q20 Is the BX-120 waterproof?
+  Q21 How heavy is the AX-300?
+  Q22 Does the AX-210 have a mic for calls?
+
+  chunking  every 25 words          + meaning          - - 1 - 3 - 1 1 1 1 2 - 1 2 3 2 1 - - 1 - 3   found 14/22   first  8/22   126 chunks   0.02 s per question
+  chunking  every 80 words          + meaning          1 1 1 2 2 1 1 1 1 1 1 1 1 1 1 1 1 2 1 1 1 1   found 22/22   first 19/22    43 chunks   0.01 s per question
+  chunking  80 words, 20 overlap    + meaning          2 1 1 2 2 1 3 1 1 1 1 1 1 2 1 1 1 3 1 1 1 1   found 22/22   first 16/22    52 chunks   0.01 s per question
+  chunking  one per section         + meaning          1 1 1 2 3 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1   found 22/22   first 20/22    57 chunks   0.01 s per question
+  chunking  one per whole document  + meaning          2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1   found 22/22   first 21/22    10 chunks   0.01 s per question
+  search    one per section         + keyword          2 1 1 1 1 1 - - 1 1 3 1 1 - 1 1 1 1 1 1 1 1   found 19/22   first 17/22    57 chunks   0.00 s per question
+  search    one per section         + hybrid           1 1 1 1 1 1 3 3 1 1 1 1 1 1 1 1 1 1 1 1 1 1   found 22/22   first 20/22    57 chunks   0.01 s per question
+  search    one per section         + hybrid + rerank  1 1 1 1 1 1 1 1 1 2 1 1 1 1 1 1 1 1 1 1 1 1   found 22/22   first 21/22    57 chunks   4.75 s per question
+
+  what the search numbers say
+  25-word chunks                           found 14/22   first  8/22
+  80-word chunks                           found 22/22   first 19/22
+  80-word chunks with overlap              found 22/22   first 16/22
+  one chunk per section                    found 22/22   first 20/22
+  one chunk per document                   found 22/22   first 21/22
+  keyword search alone                     found 19/22   first 17/22
+  hybrid                                   found 22/22   first 20/22
+  hybrid + rerank                          found 22/22   first 21/22
+  meaning search missed, keyword search found: none
+  keyword search missed, meaning search found: Q7, Q8, Q14
+  meaning search missed, full pipeline found: none
+  25-word chunks missed, sections found: Q1, Q2, Q4, Q6, Q12, Q18, Q19, Q21
+  meaning search, sections, fact not in first place: Q4, Q5
+
+PART 2  answers: does the reply state the fact
+
+  --- no documents
+  Q1  WRONG  Since you paid cash on delivery, you should contact the shop directly to initiate the refund process. The time it takes can vary, but typically refunds are processed within 5-10 business days.
+  Q2  WRONG  The AX-220 Pro comes with a 1-year limited warranty from the date of purchase. For more details, please refer to the warranty section in your product manual or contact our customer support.
+  Q3  WRONG  The wired AX-200 is covered for a full year under the standard warranty.
+  Q4  WRONG  The error code PAY-4027 typically indicates an issue with the payment method or card details. Please check the card information and try again. If the problem persists, contact your card issuer for further assistance.
+  Q5  WRONG  The code PAY-5003 typically indicates a payment processing error, but without specific information from the shop's system, I can't provide the exact meaning. Please check with the shop's support for more details.
+  Q6  WRONG  If the app shows your parcel arrived but nothing came, please check the tracking details and contact customer support for further assistance.
+  Q7  WRONG  If you've opened the earbuds, you may no longer be eligible for a return or refund, as they are considered used. Please check the shop's return policy for specific details.
+  Q8  RIGHT  The courier will typically try to deliver your order up to three times. If the package is not delivered after these attempts, you may need to contact customer support for further assistance.
+  Q9  WRONG  Yes, you can swap the shoes for a bigger size. Please contact our customer service to initiate the exchange.
+  Q10 WRONG  If your order is below the minimum purchase amount, you will be charged for shipping. Since 300 rupees is below the minimum, you will need to pay for shipping.
+  Q11 WRONG  If you cancelled a prepaid order before it shipped, the refund typically takes 5-10 business days to process and appear in your account, depending on your payment method and the shop's policies.
+  Q12 WRONG  Yes, you can pay cash for a 7,000 rupee order. Please ensure you bring the exact amount in cash when making the payment.
+  Q13 WRONG  If your new bottle is leaking, we can replace it for you. Please contact our customer service team to arrange the replacement.
+  Q14 WRONG  If you need to change the delivery address after placing an order, please contact our customer support as soon as possible. We may be able to update the address before the order is shipped, depending on the timing.
+  Q15 WRONG  DEL-2140 is a product model number, which refers to a specific item in our online shop. If you need more details about this product, feel free to ask.
+  Q16 WRONG  The error ACC-1070 typically indicates an issue with your account or login details. Please check your email and password, and if the problem persists, contact our support team for further assistance.
+  Q17 WRONG  The return request with the code RET-3310 indicates that your return has been successfully processed and is currently being reviewed by our team. Please wait a few days for the status to update.
+  Q18 WRONG  The error code PAY-4072 typically indicates an issue with the payment method or processing. Please check the payment details and try again, or contact your card issuer for further assistance.
+  Q19 WRONG  The battery life of the AX-250 typically lasts around 8 to 10 hours under normal usage conditions. For more detailed information, please refer to the product specifications or contact our support team.
+  Q20 WRONG  I don't know the specific waterproof rating of the BX-120. Please check the product description or contact customer support for detailed information.
+  Q21 WRONG  The AX-300 weighs 15 pounds.
+  Q22 WRONG  The AX-210 does not have a built-in microphone for calls.
+
+  --- 25-word chunks + meaning search
+  Q1  WRONG  Since you paid cash on delivery, there is nothing to refund. However, if you return the item, the refund will start once the package is scanned back at our warehouse. The exact time for the refund depends on our processing times.
+  Q2  WRONG  The AX-220 Pro has a 12-month warranty.
+  Q3  WRONG  Yes, the wired AX-200 is covered for a full year.
+  Q4  WRONG  The PAY-4027 error indicates that the UPI request timed out. Try again, and if the issue persists, check your internet connection and ensure your card details are correct.
+  Q5  RIGHT  The error code PAY-5003 means that cash on delivery is not available at your pin code because the courier that serves your area doesn't support it.
+  Q6  WRONG  The app says your parcel arrived, but nothing came. First, check with your neighbours, building security, and anyone else at home, as couriers often leave packages with them. If it's still not there, the tracking might be delayed or incorrect.
+  Q7  WRONG  Yes, you can send back earbuds after you opened them, but they can't be exchanged for a different model or colour. If they are faulty, use the warranty process.
+  Q8  RIGHT  The courier makes three delivery attempts on three separate working days.
+  Q9  RIGHT  Yes, you can exchange your shoes for a bigger size within 15 days of delivery. The shoes must be unworn, with the tags on and the box intact.
+  Q10 RIGHT  Yes, you will pay for shipping on a ₹300 order. Since the order is below ₹499, a flat shipping fee of ₹49 is added at checkout.
+  Q11 RIGHT  You will get your refund within 2 working days.
+  Q12 RIGHT  No, you cannot pay cash for a 7,000 rupee order. The cash on delivery option is not available for orders above ₹5,000.
+  Q13 RIGHT  Yes, we will replace your leaking bottle. Report the leak within 7 days of delivery with a short video showing where the water comes out, and we will send a new bottle.
+  Q14 RIGHT  Yes, you can change the delivery address until the package leaves our warehouse. Open the order and tap Edit address to save the new address.
+  Q15 RIGHT  DEL-2140 means the address was incomplete, most often because the flat number or a landmark was missing. You need to add the missing details from the tracking link before the next attempt.
+  Q16 RIGHT  The error ACC-1070 means your account is locked for one hour after five failed sign-in attempts. Wait one hour before trying to sign in again.
+  Q17 RIGHT  The return request shows RET-3310 because a return request already exists for this item, and a second one cannot be opened.
+  Q18 WRONG  The help-centre passages do not provide information about the error code PAY-4072. I don't know what went wrong.
+  Q19 WRONG  The help-centre passages do not provide information about the battery life of the AX-250.
+  Q20 RIGHT  The BX-120 is rated IPX7, which means it can survive being dropped in water for a short time, but it is not fully waterproof.
+  Q21 WRONG  The AX-300 weighs 28 grams.
+  Q22 WRONG  The AX-210 does not have a mic for calls.
+
+  --- sections + meaning search
+  Q1  RIGHT  Since you paid cash on delivery, there is no original payment method to refund. After the return is picked up, we send you a secure link by SMS. You enter your bank account number and IFSC code there, and we pay the refund by bank transfer. It reaches you 7 to 10 working days after you submit the details.
+  Q2  RIGHT  The AX-220 Pro is covered by an 18-month warranty. The period starts on the delivery date, and it covers faults in the drivers, the battery, and the charging port.
+  Q3  RIGHT  The wired AX-200 is covered for 6 months, not a full year.
+  Q4  RIGHT  Wait 30 minutes before trying again, so the first request can expire. If you approve the old request and start a new one too, you could pay twice.
+  Q5  RIGHT  The error code PAY-5003 means that cash on delivery is not available at your pin code. The courier that serves your area doesn't collect cash. Choose UPI, a card or net banking to place the order.
+  Q6  RIGHT  First, check with your neighbours, building security, and anyone else at home, as couriers often leave a package with them. If it still hasn't turned up, report it to us within 48 hours of the delivered scan.
+  Q7  RIGHT  No, you cannot send back earbuds after you opened them because they are considered a final sale item once the seal is broken.
+  Q8  RIGHT  The courier will make three delivery attempts on three separate working days.
+  Q9  RIGHT  Yes, you can exchange the shoes for a bigger size within 15 days of delivery, provided they are unworn, with the tags on and the box intact.
+  Q10 RIGHT  Yes, you will pay a flat shipping fee of ₹49 for a 300 rupee order since it is below the ₹499 free shipping limit.
+  Q11 RIGHT  Since you cancelled a prepaid order before it shipped, the refund is started at once and reaches you within 2 working days.
+  Q12 RIGHT  No, you cannot pay cash for a ₹7,000 order. Cash on delivery is only available for orders up to ₹5,000, and for higher amounts, you must pay online via UPI, credit card, debit card, or net banking.
+  Q13 RIGHT  Yes, we will replace your leaking water bottle. Report the leak within 7 days of delivery with a short video showing where the water comes out, and we will send a new bottle.
+  Q14 RIGHT  Yes, you can change the delivery address until the package leaves our warehouse. Open the order, tap Edit address, and save the new one. Once the status says shipped, the address is locked.
+  Q15 RIGHT  DEL-2140 means the address was incomplete, most often because the flat number or a landmark was missing. Add the missing details from the tracking link before the next attempt.
+  Q16 RIGHT  Your account is locked for one hour after five failed sign-in attempts. Wait for the hour to pass and then try signing in again. Resetting the password doesn't remove the lock.
+  Q17 RIGHT  The return request shows RET-3310 because a return request already exists for this item, and a second one cannot be opened. Check the status of the first request and its pickup date.
+  Q18 RIGHT  The payment went through 3D Secure, but the one-time password you typed was wrong or had expired. Please ask for a fresh password using the Resend button and enter it within five minutes.
+  Q19 RIGHT  The battery on the AX-250 lasts up to 18 hours.
+  Q20 RIGHT  The BX-120 is rated IPX7, which means it can survive being dropped in water for a short time and it floats, so it is waterproof.
+  Q21 RIGHT  The AX-300 weighs 310 grams.
+  Q22 RIGHT  Yes, the AX-210 has an inline microphone for calls.
+
+  --- sections + hybrid + rerank
+  Q1  RIGHT  Since you paid cash on delivery, there is no original payment method to refund. After the return is picked up, we send you a secure link by SMS. You enter your bank account number and IFSC code there, and we pay the refund by bank transfer. It reaches you 7 to 10 working days after you submit the details.
+  Q2  RIGHT  The AX-220 Pro is covered by an 18-month warranty. The period starts on the delivery date, and it covers faults in the drivers, the battery, and the charging port.
+  Q3  RIGHT  The AX-200 is covered for 6 months, so it is not covered for a full year.
+  Q4  RIGHT  You should wait 30 minutes before trying again, so the first request can expire. If you approve the old request and start a new one too, you could pay twice.
+  Q5  RIGHT  The error code PAY-5003 means that cash on delivery is not available at your pin code. You should choose UPI, a card, or net banking to place the order.
+  Q6  RIGHT  First, check with your neighbours, building security, and anyone else at home, as couriers often leave a package with them. If it still hasn't turned up, report it to us within 48 hours of the delivered scan.
+  Q7  RIGHT  No, you cannot send back earbuds after you opened them because they are considered a final sale item once the seal is broken.
+  Q8  RIGHT  The courier will make three delivery attempts on three separate working days.
+  Q9  RIGHT  Yes, you can exchange your shoes for a bigger size within 15 days of delivery, provided they are unworn, with the tags on and the box intact.
+  Q10 RIGHT  Yes, you pay a flat shipping fee of ₹49 for a 300 rupee order, as shipping is free only on orders above ₹499.
+  Q11 RIGHT  Since you cancelled a prepaid order before it shipped, the refund is started at once and reaches you within 2 working days.
+  Q12 RIGHT  No, you cannot pay cash for a 7,000 rupee order. Cash on delivery is only available for orders up to ₹5,000, and for higher amounts, you must pay online using UPI, credit card, debit card, or net banking.
+  Q13 RIGHT  Yes, if your new water bottle leaks, we will replace it with a new one. Report the leak within 7 days of delivery with a short video showing where the water comes out.
+  Q14 RIGHT  Yes, you can change the delivery address until the package leaves our warehouse. Open the order, tap Edit address, and save the new one. Once the status says shipped, the address is locked.
+  Q15 RIGHT  The DEL-2140 error means the address was incomplete, most often because the flat number or a landmark was missing. Add the missing details from the tracking link before the next attempt.
+  Q16 RIGHT  The ACC-1070 error means your account is locked for one hour after five failed sign-in attempts. Wait for the hour to pass and then try signing in again. Resetting your password won't remove the lock.
+  Q17 RIGHT  The error code RET-3310 means a return request already exists for this item, so a second one cannot be opened. Check the status of the first request and its pickup date.
+  Q18 RIGHT  The payment went through 3D Secure, but the one-time password you typed was wrong or had expired. Please ask for a fresh password using the Resend button and enter it within five minutes.
+  Q19 RIGHT  The battery on the AX-250 lasts up to 18 hours.
+  Q20 RIGHT  Yes, the BX-120 is waterproof as it is rated IPX7, which means it can survive being dropped in water for a short time and it floats.
+  Q21 RIGHT  The AX-300 weighs 310 grams.
+  Q22 RIGHT  Yes, the AX-210 has an inline microphone for calls.
+
+  --- whole documents + meaning search
+  Q1  RIGHT  If you paid cash on delivery, you will receive a secure link via SMS after the return is picked up. Enter your bank account number and IFSC code through the link, and the refund will be processed by bank transfer, taking 7 to 10 working days.
+  Q2  RIGHT  The AX-220 Pro has a warranty of 18 months.
+  Q3  RIGHT  The wired AX-200 is covered for 6 months, not a full year.
+  Q4  RIGHT  The UPI request timed out before you approved it in your UPI app. Wait 30 minutes before trying again, so the first request can expire. If you approve the old request and start a new one too, you could pay twice.
+  Q5  RIGHT  The error code PAY-5003 means that cash on delivery is not available at your pin code. You should choose UPI, a card, or net banking to place the order.
+  Q6  RIGHT  If the app says your parcel arrived but nothing came, first check with your neighbors, building security, and anyone else at home. If it still hasn't turned up, report it to us within 48 hours of the delivered scan. We will open an investigation with the courier and either find the package or send you a replacement.
+  Q7  RIGHT  You cannot return earbuds once the seal is broken because they sit inside the ear and are considered a final sale item for hygiene reasons.
+  Q8  RIGHT  The courier makes three delivery attempts on three separate working days.
+  Q9  RIGHT  Yes, you can exchange the shoes for a bigger size within 15 days of delivery, provided they are unworn, with the tags on and the box intact.
+  Q10 RIGHT  Yes, you will pay a flat shipping fee of ₹49 for a ₹300 order, as shipping is free only on orders above ₹499.
+  Q11 RIGHT  Since you cancelled a prepaid order before it shipped, the refund is started at once and reaches you within 2 working days.
+  Q12 RIGHT  No, you cannot pay cash for a 7,000 rupee order. Cash on delivery is only available for orders up to ₹5,000 at most pin codes, and above that amount, you need to pay online.
+  Q13 RIGHT  Yes, we will replace your leaking water bottle. Report the leak within 7 days of delivery with a short video showing where the water comes out, and we will send a new bottle without requiring you to return the old one.
+  Q14 RIGHT  Yes, you can change the delivery address until the package leaves our warehouse. Once the status says "shipped," the address is locked, and you can't change it anymore.
+  Q15 RIGHT  DEL-2140 means the address was incomplete, most often because the flat number or a landmark was missing. Add the missing details from the tracking link before the next attempt.
+  Q16 RIGHT  The ACC-1070 error means your account is locked for one hour after five failed sign-in attempts in a row. Wait for the hour to pass and then sign in again. Resetting the password doesn't remove the lock.
+  Q17 RIGHT  The return request shows RET-3310 because a return request already exists for this item, so a second one can't be opened. Open the order to see the status of the first request and its pickup date.
+  Q18 RIGHT  The payment went through 3D Secure, but the one-time password you typed was wrong or had expired. Ask for a fresh password with the Resend button and enter it within five minutes.
+  Q19 RIGHT  The battery on the AX-250 lasts up to 18 hours.
+  Q20 RIGHT  The BX-120 is rated IPX7, which means it can survive being dropped in water for a short time and it floats, but it is not fully waterproof.
+  Q21 RIGHT  The AX-300 weighs 310 grams, which makes it the heaviest headphone we sell.
+  Q22 RIGHT  Yes, the AX-210 has an inline microphone and a mute switch on the cable for calls.
+
+  --- whole help centre in the prompt
+  Q1  RIGHT  If you paid cash on delivery, you will receive a secure link by SMS after the return is picked up. Enter your bank account number and IFSC code through the link, and the refund will be sent by bank transfer, reaching you in 7 to 10 working days.
+  Q2  RIGHT  The AX-220 Pro comes with an 18-month warranty starting from the delivery date. The warranty covers faults in the drivers, the battery, and the charging port.
+  Q3  RIGHT  No, the wired AX-200 is covered for 6 months, not a full year.
+  Q4  RIGHT  The PAY-4027 error means the UPI request timed out before you approved it. Wait 30 minutes before trying again, so the first request can expire. If you approve the old request and start a new one too, you could pay twice.
+  Q5  RIGHT  PAY-5003 means cash on delivery is not available at your pin code. The courier that serves your area doesn't collect cash. Choose UPI, a card or net banking to place the order.
+  Q6  RIGHT  If the app says your parcel arrived but nothing came, first check with your neighbors, building security, and anyone else at home. If it still hasn't turned up, report it to us within 48 hours of the delivered scan. We will open an investigation with the courier, which takes up to 3 working days, and then we either find the package or send you a replacement.
+  Q7  RIGHT  No, you cannot return earbuds after you opened them because they are considered a final sale item for hygiene reasons. If they arrive damaged or faulty, you can use the warranty process instead.
+  Q8  RIGHT  The courier makes three delivery attempts on three separate working days.
+  Q9  RIGHT  Yes, you can exchange the shoes for a bigger size within 15 days of delivery, provided they are unworn, with the tags on and the box intact.
+  Q10 RIGHT  Yes, you pay for shipping on a ₹300 order because shipping is free only on orders above ₹499. Your order will have a flat shipping fee of ₹49 added at checkout.
+  Q11 RIGHT  If you cancelled a prepaid order before it shipped, the refund is started at once and reaches you within 2 working days.
+  Q12 RIGHT  No, cash on delivery is not available for orders above ₹5,000. You will need to pay online using UPI, credit card, debit card, or net banking.
+  Q13 RIGHT  Yes, we will replace your leaking water bottle. Report the leak within 7 days of delivery with a short video showing where the water comes out, and we will send a new bottle.
+  Q14 RIGHT  You can change the delivery address only until the package leaves our warehouse. Once the status says shipped, the address is locked, because the label has already been printed.
+  Q15 RIGHT  DEL-2140 means the address was incomplete, most often because the flat number or a landmark was missing. Add the missing details from the tracking link before the next attempt.
+  Q16 RIGHT  Your account is locked for one hour after five failed sign-in attempts in a row. Wait for the hour to pass and then sign in again. Resetting the password doesn't remove the lock.
+  Q17 RIGHT  The RET-3310 error means a return request already exists for this item, so a second one can't be opened. Check the status of the first request and its pickup date from the order details.
+  Q18 WRONG  The PAY-4120 error means your net banking session closed before the payment finished, usually because the bank's page was left open too long. Start the payment again and finish it in one go without switching apps.
+  Q19 RIGHT  The AX-250 has a battery that lasts up to 18 hours.
+  Q20 RIGHT  The BX-120 is rated IPX7, which means it can survive being dropped in water for a short time and it floats, but it is not fully waterproof.
+  Q21 RIGHT  The AX-300 weighs 310 grams, which makes it the heaviest headphone we sell.
+  Q22 RIGHT  Yes, the AX-210 has an inline microphone and a mute switch on the cable, making it suitable for calls.
+
+  summary
+  no documents                       right  1/22   average tokens read 72
+  25-word chunks + meaning search    right 12/22   average tokens read 198
+  sections + meaning search          right 22/22   average tokens read 301
+  sections + hybrid + rerank         right 22/22   average tokens read 312
+  whole documents + meaning search   right 22/22   average tokens read 1231
+  whole help centre in the prompt    right 21/22   average tokens read 3869
+
+real	8m50.066s
+user	0m1.535s
+sys	0m0.439s
